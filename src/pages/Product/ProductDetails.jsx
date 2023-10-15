@@ -48,7 +48,6 @@ const ProductDetails = () => {
 
 	return (
 		<>
-
 			<NavBar />
 			<div className="mx-auto px-4 pt-32 pb-16">
 				<div className='mb-3 border shadow-md lg:w-[5%] w-[20%] text-center p-2 rounded-md'>
