@@ -1,13 +1,34 @@
-
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from '../../api/axios';
+import { useCartContext } from '../../context/UseCartContext';
+import NavBar from '../../components/NavBar';
+import { useAuthContext } from '../../context/AuthContext';
 
 const ProductDetails = () => {
 	const { id } = useParams(); // Get the product ID from the URL
-
+	const navigate = useNavigate()
+	const { user } = useAuthContext();
+	const { cartState, addToCart, removeFromCart } = useCartContext();
 	const [product, setProduct] = useState(null);
+	const isItemInCart = (productId) => {
+		return cartState.cart.some((item) => item.id === productId);
+	};
 
+	const AddToCart = (product) => {
+		if (user) {
+			if (isItemInCart(product.id)) {
+				// If the item is in the cart, display a "Remove from Cart" button
+				removeFromCart(product);
+			} else {
+				// If the item is not in the cart, display an "Add to Cart" button
+				addToCart(product);
+			}
+		} else {
+			alert('Please Login First');
+			navigate('/login');
+		}
+	};
 	useEffect(() => {
 		axios
 			.get(`/products/${id}`)
@@ -26,14 +47,36 @@ const ProductDetails = () => {
 	const { image, price, rating, title, description, category } = product;
 
 	return (
-		<div className="flex flex-col items-center p-8">
-			<img src={image} alt={title} className="max-w-full max-h-96 border rounded-lg mb-4" />
-			<h2 className="text-3xl font-semibold mb-2">{title}</h2>
-			<p className="text-xl font-semibold text-blue-600 mb-2">{description}</p>
-			<p>{category}</p>
-			<p>Price: ${price}</p>
-			<p className="text-lg text-blue-500">Rating: {rating.rate}</p>
-		</div>
+		<>
+
+			<NavBar />
+			<div className="mx-auto px-4 pt-32 pb-16">
+				<div className='mb-3 border shadow-md lg:w-[5%] w-[20%] text-center p-2 rounded-md'>
+					<Link to="/" className="text-black font-semibold ">
+						Back
+					</Link>
+				</div>
+
+				<div className="lg:flex justify-between gap-8 items-center border p-3 shadow-lg rounded-md">
+
+					<div>
+						<img src={image} alt={title} className="w-full rounded-lg mb-4" />
+					</div>
+					<div>
+						<h2 className="text-2xl font-bold mb-2">Product Name : <span className='text-xl font-normal'>{title}</span> </h2>
+						<p className="text-2xl font-bold text-black mb-2">Category: <span className='text-xl font-normal' > {category}</span> </p>
+						<p className="text-2xl font-bold text-black mb-2">Product Description: <span className='text-xl font-normal'>{description}</span></p>
+						<p className="text-2xl font-bold text-black mb-2">Price: <span className='text-xl font-normal'>${price}</span> </p>
+						<p className="text-2xl font-bold text-black mb-4">Rating: <span className='text-xl font-normal'>{rating.rate}</span> </p>
+
+						<button type="submit" onClick={() => AddToCart(product)} className='bg-blue-500 shadow-md text-white py-2 px-4 rounded-md'>
+							{isItemInCart(product.id) ? 'Remove from Cart' : 'Add to Cart'}
+						</button>
+					</div>
+
+				</div>
+			</div>
+		</>
 	);
 };
 

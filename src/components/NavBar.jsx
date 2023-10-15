@@ -28,8 +28,8 @@ const NavBar = () => {
 	};
 
 	return (
-		<div>
-			<nav className="flex items-center justify-between shadow-lg p-5 px-4 sm:px-16">
+		<div className=' z-20 fixed w-full'>
+			<nav className="flex  w-full items-center bg-white justify-between shadow-lg p-5 px-4 sm:px-16 ">
 				<div className='font-bold text-2xl sm:text-3xl'>
 					shopIT
 				</div>

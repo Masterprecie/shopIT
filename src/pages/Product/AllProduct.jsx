@@ -52,7 +52,7 @@ const AllProduct = () => {
 	}
 
 	return (
-		<div className="lg:grid grid-cols-4 gap-5  gap-y-10 lg:px-16 px-5 py-14">
+		<div className="lg:grid grid-cols-4 gap-5  gap-y-10 lg:px-16 px-5 py-14 pt-32 z-0 relative">
 			{products.map((product) => {
 				const { id, image, price, rating, title } = product;
 				return (
