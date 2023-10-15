@@ -4,6 +4,9 @@ import axios from '../../api/axios';
 import { useCartContext } from '../../context/UseCartContext';
 import NavBar from '../../components/NavBar';
 import { useAuthContext } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProductDetails = () => {
 	const { id } = useParams(); // Get the product ID from the URL
@@ -23,6 +26,15 @@ const ProductDetails = () => {
 			} else {
 				// If the item is not in the cart, display an "Add to Cart" button
 				addToCart(product);
+				toast.success('Item added to cart!', {
+					position: 'top-right',
+					autoClose: 3000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
 			}
 		} else {
 			alert('Please Login First');

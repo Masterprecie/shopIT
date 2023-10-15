@@ -6,6 +6,9 @@ import { useAuthContext } from '../../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCartContext } from '../../context/UseCartContext';
 import PropTypes from 'prop-types'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AllProduct = ({ searchQuery }) => {
 	const navigate = useNavigate();
@@ -45,6 +48,15 @@ const AllProduct = ({ searchQuery }) => {
 			} else {
 				// If the item is not in the cart, display an "Add to Cart" button
 				addToCart(product);
+				toast.success('Item added to cart!', {
+					position: 'top-right',
+					autoClose: 3000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
 			}
 		} else {
 			alert('Please Login First');
