@@ -3,8 +3,10 @@ import { useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import emptycart from '../../assets/emptycart.webp'
 import PropTypes from 'prop-types'
+import { useThemeContext } from '../../context/useThemeContext';
 
 const CartSidebar = ({ isOpen, onClose }) => {
+	const { theme } = useThemeContext();
 	const { cartState, removeFromCart, getTotalCartValue, updateQuantity, clearCart } = useCartContext();
 	const { cart } = cartState;
 	const [isSidebarOpen, setIsSidebarOpen] = useState(isOpen);
@@ -21,10 +23,13 @@ const CartSidebar = ({ isOpen, onClose }) => {
 		// Update the quantity of the item in the cart
 		updateQuantity(item, newQuantity);
 	};
+
+	const customBgClass = theme === 'light' ? 'bg-white' : 'bg-gray-900';
+
 	return (
 
 		<div
-			className={`fixed right-0 top-0 h-screen w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-64'
+			className={`fixed right-0 top-0 h-screen w-80 ${customBgClass} shadow-lg transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : 'translate-x-64'
 				}`}
 		>
 			<div className="p-4 border-b flex items-center justify-between">

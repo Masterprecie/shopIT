@@ -6,6 +6,7 @@ import NavBar from '../../components/NavBar';
 import { useAuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 
 
 const ProductDetails = () => {
@@ -52,33 +53,35 @@ const ProductDetails = () => {
 			});
 	}, [id]);
 
+
 	if (!product) {
-		return <p>Loading...</p>;
+		return <div> <LoadingSpinner /> </div>
 	}
+
 
 	const { image, price, rating, title, description, category } = product;
 
 	return (
 		<>
 			<NavBar />
-			<div className="mx-auto px-4 pt-32 pb-16">
+			<div className="mx-auto px-4 pt-32 pb-16  h-auto">
 				<div className='mb-3 border shadow-md lg:w-[5%] w-[20%] text-center p-2 rounded-md'>
-					<Link to="/" className="text-black font-semibold ">
+					<Link to="/" className=" font-semibold ">
 						Back
 					</Link>
 				</div>
 
 				<div className="lg:flex justify-between gap-8 items-center border p-3 shadow-lg rounded-md">
 
-					<div>
+					<div >
 						<img src={image} alt={title} className="w-full rounded-lg mb-4" />
 					</div>
 					<div>
 						<h2 className="text-2xl font-bold mb-2">Product Name : <span className='text-xl font-normal'>{title}</span> </h2>
-						<p className="text-2xl font-bold text-black mb-2">Category: <span className='text-xl font-normal' > {category}</span> </p>
-						<p className="text-2xl font-bold text-black mb-2">Product Description: <span className='text-xl font-normal'>{description}</span></p>
-						<p className="text-2xl font-bold text-black mb-2">Price: <span className='text-xl font-normal'>${price}</span> </p>
-						<p className="text-2xl font-bold text-black mb-4">Rating: <span className='text-xl font-normal'>{rating.rate}</span> </p>
+						<p className="text-2xl font-bold mb-2">Category: <span className='text-xl font-normal' > {category}</span> </p>
+						<p className="text-2xl font-bold mb-2">Product Description: <span className='text-xl font-normal'>{description}</span></p>
+						<p className="text-2xl font-bold mb-2">Price: <span className='text-xl font-normal'>${price}</span> </p>
+						<p className="text-2xl font-bold mb-4">Rating: <span className='text-xl font-normal'>{rating.rate}</span> </p>
 
 						<button type="submit" onClick={() => AddToCart(product)} className='bg-blue-500 shadow-md text-white py-2 px-4 rounded-md'>
 							{isItemInCart(product.id) ? 'Remove from Cart' : 'Add to Cart'}

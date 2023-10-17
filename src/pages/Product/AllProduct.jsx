@@ -1,5 +1,6 @@
 import { BsCart4 } from 'react-icons/bs';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { BsArrowRightShort } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import axios from '../../api/axios';
 import { useAuthContext } from '../../context/AuthContext';
@@ -8,6 +9,7 @@ import { useCartContext } from '../../context/UseCartContext';
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 
 
 const AllProduct = ({ searchQuery }) => {
@@ -65,7 +67,7 @@ const AllProduct = ({ searchQuery }) => {
 	};
 
 	if (isLoading) {
-		return <p>Loading...</p>;
+		return <div> <LoadingSpinner /> </div>
 	}
 
 	return (
@@ -97,17 +99,20 @@ const AllProduct = ({ searchQuery }) => {
 									))}
 								</div>
 
-								<div className="flex items-center text-end gap-3 justify-between  py-2  mt-4  w-[100%] rounded-lg">
-									<div className='flex gap-4 border p-2 rounded-md shadow-md '>
+								<div className="flex items-center text-end justify-between  py-2  mt-4  w-[100%] rounded-lg">
+									<div className='flex gap-2 border p-2 rounded-md shadow-md '>
 										<BsCart4 size={20} className="text-red-500" />
-										<button type="submit" onClick={() => AddToCart(product)} className='text-sm font-semibold'>
+										<button type="submit" onClick={() => AddToCart(product)} className='text-xs font-semibold'>
 											{isItemInCart(product.id) ? 'Remove from Cart' : 'Add to Cart'}
 										</button>
 									</div>
 
 									<div className='text-sm font-semibold ' >
 										<Link to={`/product/${id}`}>
-											<button className='underline'> See Details</button>
+											<div className='flex gap-1 items-center'>
+												<button className='underline'> See Details</button>
+												<BsArrowRightShort />
+											</div>
 										</Link>
 									</div>
 								</div>

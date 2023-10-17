@@ -5,8 +5,11 @@ import { useCartContext } from '../context/UseCartContext';
 import CartSidebar from '../pages/Cart/CartSidebar';
 import { useState } from 'react';
 import PropTypes from 'prop-types'
+import ToggleIcon from './ToggleIcon';
+import { useThemeContext } from '../context/useThemeContext';
 
 const NavBar = ({ onSearch }) => {
+	const { theme } = useThemeContext();
 	const { user, logOut } = useAuthContext();
 	const { getCartCount } = useCartContext();
 
@@ -36,17 +39,26 @@ const NavBar = ({ onSearch }) => {
 		setIsMobileMenuOpen(!isMobileMenuOpen);
 	};
 
+
+
+	const customBgClass = theme === 'light' ? 'bg-white' : 'bg-gray-900';
+
+
 	return (
 		<>
 
-			<div className=' z-20 fixed w-full'>
-				<nav className="flex  w-full items-center bg-white justify-between shadow-lg p-5 px-4 sm:px-16 ">
+			<div className=' z-20 fixed w-full' >
+				<nav className={`flex w-full items-center ${customBgClass} justify-between shadow-lg p-5 px-4 sm:px-16`}>
 					<div className='font-bold text-2xl sm:text-3xl'>
 						shopIT
 					</div>
 
 					<div className='flex gap-5 items-center'>
+						<div className='block lg:hidden'>
+							<ToggleIcon />
+						</div>
 						<div className='relative lg:hidden block' onClick={openSidebar}>
+
 							<div className='absolute bottom-4 left-4 text-xs text-white rounded-full h-2 w-2 bg-red-500 items-center justify-center flex p-2'>
 								{getCartCount()}
 							</div>
@@ -96,6 +108,7 @@ const NavBar = ({ onSearch }) => {
 								<div className='font-semibold'>
 									<button onClick={() => logOut()}>Logout</button>
 								</div>
+								<ToggleIcon />
 							</>
 						) : (
 							<>
@@ -119,7 +132,7 @@ const NavBar = ({ onSearch }) => {
 
 				{/* Mobile menu */}
 				{isMobileMenuOpen && (
-					<div className="sm:hidden bg-white shadow-lg p-4">
+					<div className={`sm:hidden ${customBgClass} shadow-lg p-4`}>
 						{user ? (
 							<>
 								<div className='font-semibold'>
@@ -170,6 +183,6 @@ const NavBar = ({ onSearch }) => {
 	);
 }
 NavBar.propTypes = {
-	onSearch: PropTypes.string.isRequired,
+	onSearch: PropTypes.func.isRequired,
 }
 export default NavBar;

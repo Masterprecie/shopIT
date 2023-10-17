@@ -4,10 +4,29 @@ import Login from "./pages/Auth/Login"
 import Register from "./pages/Auth/Register"
 import ProductDetails from "./pages/Product/ProductDetails"
 import { ToastContainer } from "react-toastify"
+import { useThemeContext } from "./context/useThemeContext"
+
+
+export const lightTheme = {
+  backgroundColor: 'white',
+  textColor: 'black',
+};
+
+export const darkTheme = {
+  backgroundColor: 'black',
+};
+
 function App() {
+  const { theme } = useThemeContext();
+  const themeStyles = theme === 'light' ? lightTheme : darkTheme;
 
   return (
-    <>
+    <div style={
+      {
+        backgroundColor: themeStyles.backgroundColor,
+        color: themeStyles.textColor,
+      }
+    }>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -16,7 +35,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
       <ToastContainer />
-    </>
+    </div>
   )
 }
 
