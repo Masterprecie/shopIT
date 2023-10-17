@@ -5,16 +5,10 @@ import Register from "./pages/Auth/Register"
 import ProductDetails from "./pages/Product/ProductDetails"
 import { ToastContainer } from "react-toastify"
 import { useThemeContext } from "./context/useThemeContext"
+import { darkTheme, lightTheme } from "./utils/constant"
 
 
-export const lightTheme = {
-  backgroundColor: 'white',
-  textColor: 'black',
-};
 
-export const darkTheme = {
-  backgroundColor: 'black',
-};
 
 function App() {
   const { theme } = useThemeContext();
