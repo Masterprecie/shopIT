@@ -45,7 +45,7 @@ function Register() {
 							setUsername(e.target.value)
 							handleInputChange()
 						}}
-						className="w-full border p-2 rounded"
+						className="w-full border p-2 rounded  text-black"
 					/>
 				</div>
 				<div className="mb-4">
@@ -58,7 +58,7 @@ function Register() {
 							setEmail(e.target.value)
 							handleInputChange();
 						}}
-						className="w-full border p-2 rounded"
+						className="w-full border p-2 rounded  text-black"
 					/>
 				</div>
 				<div className="mb-4">
@@ -72,7 +72,7 @@ function Register() {
 							handleInputChange()
 						}
 						}
-						className="w-full border p-2 rounded"
+						className="w-full border p-2 rounded  text-black"
 					/>
 				</div>
 				<button disabled={!isFormValid} className="bg-blue-500 text-white p-2 rounded w-full" type="submit">Register</button>

@@ -13,14 +13,11 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
 	const closeSidebar = () => {
 		setIsSidebarOpen(false);
-		onClose(); // Notify the parent component (NavBar) that the sidebar is closed.
+		onClose();
 	};
 
 	const handleQuantityChange = (item, newQuantity) => {
-		// Ensure the new quantity is within the range [1, Infinity]
 		newQuantity = Math.max(1, newQuantity);
-
-		// Update the quantity of the item in the cart
 		updateQuantity(item, newQuantity);
 	};
 

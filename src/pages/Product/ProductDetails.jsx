@@ -77,10 +77,10 @@ const ProductDetails = () => {
 						<img src={image} alt={title} className="w-full rounded-lg mb-4" />
 					</div>
 					<div>
-						<h2 className="text-2xl font-bold mb-2">Product Name : <span className='text-xl font-normal'>{title}</span> </h2>
-						<p className="text-2xl font-bold mb-2">Category: <span className='text-xl font-normal' > {category}</span> </p>
-						<p className="text-2xl font-bold mb-2">Product Description: <span className='text-xl font-normal'>{description}</span></p>
-						<p className="text-2xl font-bold mb-2">Price: <span className='text-xl font-normal'>${price}</span> </p>
+						<h2 className="text-2xl font-bold mb-2">Product Name : <span className='md:text-xl text-lg font-normal'>{title}</span> </h2>
+						<p className="text-2xl font-bold mb-2">Category: <span className='md:text-xl text-lg capitalize font-normal' > {category}</span> </p>
+						<p className="text-2xl font-bold mb-2">Product Description: <span className='md:text-xl text-lg  font-normal'>{description}</span></p>
+						<p className="text-2xl font-bold mb-2">Price: <span className='md:text-xl text-lg font-normal '>${price}</span> </p>
 						<p className="text-2xl font-bold mb-4">Rating: <span className='text-xl font-normal'>{rating.rate}</span> </p>
 
 						<button type="submit" onClick={() => AddToCart(product)} className='bg-blue-500 shadow-md text-white py-2 px-4 rounded-md'>

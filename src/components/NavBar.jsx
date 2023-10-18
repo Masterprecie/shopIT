@@ -1,4 +1,5 @@
 import { BsCart4 } from 'react-icons/bs';
+import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import { useCartContext } from '../context/UseCartContext';
@@ -67,20 +68,7 @@ const NavBar = ({ onSearch }) => {
 						{/* Mobile menu icon */}
 						<div className="sm:hidden">
 							<button onClick={toggleMobileMenu}>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									className="h-6 w-6 text-black"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M4 6h16M4 12h16M4 18h16"
-									/>
-								</svg>
+								<HiOutlineMenuAlt3 />
 							</button>
 						</div>
 
@@ -93,7 +81,7 @@ const NavBar = ({ onSearch }) => {
 							name=''
 							id=''
 							placeholder='Search'
-							className='border rounded-md p-2 outline-0 w-[300px]'
+							className='border rounded-md p-2 outline-0 w-[300px]  text-black'
 							value={searchQuery}
 							onChange={handleSearch}
 						/>
@@ -169,7 +157,7 @@ const NavBar = ({ onSearch }) => {
 								name=''
 								id=''
 								placeholder='Search'
-								className='border rounded-md p-2 outline-0 w-full'
+								className='border rounded-md p-2 outline-0 w-full  text-black'
 								value={searchQuery}
 								onChange={handleSearch}
 							/>

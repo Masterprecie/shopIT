@@ -34,24 +34,29 @@ const cartReducer = (state, action) => {
 export const CartProvider = ({ children }) => {
 	const [cartState, dispatch] = useReducer(cartReducer, initialState);
 
-	// Add functions to interact with the cart
+	// functions to add item to cart
 	const addToCart = (product) => {
 		dispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity: 1 } });
 	};
 
+	// functions to remove item from cart
 	const removeFromCart = (product) => {
 		alert('Are you sure you want to remove this item from cart?')
 		dispatch({ type: 'REMOVE_FROM_CART', payload: product });
 	};
 
+	// functions to get the number of items added to cart 
 	const getCartCount = () => {
 		return cartState.cart.length;
 	};
+
+	// functions to clear cart
 	const clearCart = () => {
 		alert('Are you sure you want to clear your cart?')
 		dispatch({ type: 'CLEAR_CART' });
 	};
 
+	// functions to update the quantity in the cart
 	const updateQuantity = (product, quantity) => {
 		dispatch({ type: 'UPDATE_QUANTITY', payload: { id: product.id, quantity } });
 		// Recalculates the total cart value
@@ -63,6 +68,7 @@ export const CartProvider = ({ children }) => {
 	};
 
 
+	// functions to calculate total
 	const getTotalCartValue = () => {
 		const total = cartState.cart.reduce((total, item) => total + item.price * item.quantity, 0);
 		return total.toFixed(2); // Format the total to 2 decimal places

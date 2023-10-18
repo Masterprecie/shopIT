@@ -71,7 +71,7 @@ const AllProduct = ({ searchQuery }) => {
 	}
 
 	return (
-		<div className="lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 gap-5  gap-y-10 lg:px-16 px-5 py-14 pt-32 z-0 relative">
+		<div className="lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 gap-5 gap-y-10 lg:px-16 px-5 py-14 pt-32 z-0 relative ">
 			{filteredProducts.length === 0 ? (
 				<p className='font-bold text-3xl'>No items found...</p>
 			) : (
@@ -92,7 +92,7 @@ const AllProduct = ({ searchQuery }) => {
 								</p>
 								<div className="flex mt-2">
 									{Array.from({ length: Math.round(rating.rate) }, (_, index) => (
-										<AiFillStar key={index} />
+										<AiFillStar key={index} className='text-yellow-500' />
 									))}
 									{Array.from({ length: 5 - Math.round(rating.rate) }, (_, index) => (
 										<AiOutlineStar key={index} />

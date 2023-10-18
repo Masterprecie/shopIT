@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 
 const Login = () => {
+
 	const { logIn } = useAuthContext();
 	const navigate = useNavigate()
 	const [email, setEmail] = useState('');
@@ -31,11 +32,12 @@ const Login = () => {
 					<input
 						required
 						type="email"
+						placeholder='Enter your Email'
 						value={email}
 						onChange={(e) =>
 							setEmail(e.target.value)
 						}
-						className="w-full border p-2 rounded"
+						className="w-full border p-2 rounded text-black "
 					/>
 				</div>
 				<div className="mb-4">
@@ -47,7 +49,7 @@ const Login = () => {
 						onChange={(e) =>
 							setPassword(e.target.value)
 						}
-						className="w-full border p-2 rounded"
+						className="w-full border p-2 rounded text-black"
 					/>
 				</div>
 				<button
