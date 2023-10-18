@@ -64,7 +64,7 @@ const ProductDetails = () => {
 	return (
 		<>
 			<NavBar />
-			<div className="mx-auto px-4 pt-32 pb-16  h-auto">
+			<div className="mx-auto px-4 pt-32 pb-16  lg:h-[100vh] h-auto">
 				<div className='mb-3 border shadow-md lg:w-[5%] w-[20%] text-center p-2 rounded-md'>
 					<Link to="/" className=" font-semibold ">
 						Back

@@ -23,7 +23,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className="lg:w-1/4 m-auto px-5 lg:px-0 lg:mt-16 mt-8">
+		<div className="lg:w-1/4 md:w-1/2 m-auto px-5 md:px-0 md:pt-16 pt-8 h-[100vh]">
 			<h2 className="text-3xl text-center font-semibold mb-4">Login</h2>
 			<form onSubmit={handleLogin}>
 				<div className="mb-4">

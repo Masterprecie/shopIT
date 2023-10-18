@@ -71,7 +71,7 @@ const AllProduct = ({ searchQuery }) => {
 	}
 
 	return (
-		<div className="lg:grid grid-cols-4 gap-5  gap-y-10 lg:px-16 px-5 py-14 pt-32 z-0 relative">
+		<div className="lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 gap-5  gap-y-10 lg:px-16 px-5 py-14 pt-32 z-0 relative">
 			{filteredProducts.length === 0 ? (
 				<p className='font-bold text-3xl'>No items found...</p>
 			) : (
@@ -83,7 +83,7 @@ const AllProduct = ({ searchQuery }) => {
 								<img src={image} alt="" className="w-full object-scale-down h-40" />
 							</div>
 							<div>
-								<p className="text-sm font-bold">{title}</p>
+								<p className="text-sm font-bold truncate ">{title}</p>
 								<p className="font-bold">
 									Price: <span className="font-semibold">${price}</span>
 								</p>

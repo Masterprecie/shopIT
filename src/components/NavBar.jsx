@@ -48,16 +48,16 @@ const NavBar = ({ onSearch }) => {
 		<>
 
 			<div className=' z-20 fixed w-full' >
-				<nav className={`flex w-full items-center ${customBgClass} justify-between shadow-lg p-5 px-4 sm:px-16`}>
+				<nav className={`flex w-full items-center ${customBgClass} justify-between shadow-lg p-5 px-4 md:px-4 lg:px-16`}>
 					<div className='font-bold text-2xl sm:text-3xl'>
 						shopIT
 					</div>
 
 					<div className='flex gap-5 items-center'>
-						<div className='block lg:hidden'>
+						<div className='block md:hidden'>
 							<ToggleIcon />
 						</div>
-						<div className='relative lg:hidden block' onClick={openSidebar}>
+						<div className='relative md:hidden block' onClick={openSidebar}>
 
 							<div className='absolute bottom-4 left-4 text-xs text-white rounded-full h-2 w-2 bg-red-500 items-center justify-center flex p-2'>
 								{getCartCount()}
@@ -118,6 +118,7 @@ const NavBar = ({ onSearch }) => {
 								<div className='font-semibold'>
 									<Link to='/register'>Register</Link>
 								</div>
+								<ToggleIcon />
 							</>
 						)}
 

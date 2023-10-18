@@ -32,7 +32,7 @@ function Register() {
 		setIsFormValid(username.trim() !== '' && email.trim() !== '' && password.trim() !== '');
 	};
 	return (
-		<div className="lg:w-1/4  m-auto px-5 lg:px-0 lg:mt-16 mt-8">
+		<div className="md:w-1/2 lg:w-1/4  m-auto px-5 md:px-0 md:pt-16 pt-8 h-[100vh] ">
 			<h2 className="text-3xl font-semibold mb-4 text-center">Register</h2>
 			<form onSubmit={handleRegister}>
 				<div className="mb-4">
