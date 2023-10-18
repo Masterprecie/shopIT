@@ -78,7 +78,13 @@ function Register() {
 						className="w-full border p-2 rounded  text-black"
 					/>
 				</div>
-				<button disabled={!isFormValid} className="bg-blue-500 text-white p-2 rounded w-full" type="submit">Register</button>
+				<button
+					disabled={!isFormValid}
+					className={`p-2 rounded w-full ${isFormValid ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-blue-200 text-gray-700'}`}
+					type="submit"
+				>
+					Register
+				</button>
 			</form>
 			{error && <p className="text-red-500">{error}</p>}
 			<p className='font-medium pt-3'>
