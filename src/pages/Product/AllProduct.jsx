@@ -61,8 +61,8 @@ const AllProduct = ({ searchQuery }) => {
 				});
 			}
 		} else {
-			alert('Please Login First');
-			navigate('/login');
+			alert('Please Register to add a product');
+			navigate('/register');
 		}
 	};
 
