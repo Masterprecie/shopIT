@@ -41,6 +41,7 @@ function Register() {
 						required
 						type="text"
 						value={username}
+						placeholder='Enter your username'
 						onChange={(e) => {
 							setUsername(e.target.value)
 							handleInputChange()
@@ -54,6 +55,7 @@ function Register() {
 						required
 						type="email"
 						value={email}
+						placeholder='Enter your Email'
 						onChange={(e) => {
 							setEmail(e.target.value)
 							handleInputChange();
@@ -66,6 +68,7 @@ function Register() {
 					<input
 						required
 						type="password"
+						placeholder='Password must be atleast 6 characters'
 						value={password}
 						onChange={(e) => {
 							setPassword(e.target.value)

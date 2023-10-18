@@ -46,6 +46,7 @@ const Login = () => {
 						required
 						type="password"
 						value={password}
+						placeholder='Password must be atleast 6 characters'
 						onChange={(e) =>
 							setPassword(e.target.value)
 						}
